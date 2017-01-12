@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Weather</string>
+    <string name="apiUrl">http://api.openweathermap.org/data/2.5/forecast/daily?q=%1$s,TR&amp;mode=json&amp;units=metric&amp;cnt=7&amp;appid=b3f0f0afb31a14a8ac615cb0366cf029&amp;lang=tr</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
