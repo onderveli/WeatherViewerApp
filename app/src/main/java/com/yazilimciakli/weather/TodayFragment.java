@@ -4,7 +4,6 @@ package com.yazilimciakli.weather;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,16 +65,16 @@ public class TodayFragment extends Fragment {
         lblWindIcon.setTypeface(weatherFont);
         lblPressureIcon.setTypeface(weatherFont);
 
-        lblIcon.setText(WeatherIcons.getWeatherIcon(getContext(), weatherApi.list.get(0).weather.get(0).icon));
+        lblIcon.setText(WeatherIcons.getWeatherIcon(getContext(), weatherApi.getList()[0].getWeather()[0].icon));
 
-        lblDegree.setText(weatherApi.list.get(0).temp.day.intValue() + "°");
-        lblDegrees.setText(String.format("%s° / %s°", weatherApi.list.get(0).temp.max.intValue(), weatherApi.list.get(0).temp.min.intValue()));
-        lblExplanation.setText(weatherApi.list.get(0).weather.get(0).description);
-        lblCountry.setText(String.format("%s,%s", weatherApi.city.name, weatherApi.city.country));
-        lblUpdate.setText("Son Güncelleme: " + new SimpleDateFormat("dd.MM.yyyy - hh:mm").format(new Timestamp(weatherApi.list.get(0).dt * 1000).getTime()));
-        lblHumidity.setText(weatherApi.list.get(0).humidity.intValue() + " %");
-        lblWind.setText( weatherApi.list.get(0).speed + " m/s");
-        lblPressure.setText(String.format("%s hPa", weatherApi.list.get(0).pressure));
+        lblDegree.setText(weatherApi.getList()[0].getMain().getTemp()+ "°");
+        lblDegrees.setText(String.format("%s° / %s°", weatherApi.getList()[0].getMain().getTemp_max(), weatherApi.getList()[0].getMain().getTemp_min()));
+        lblExplanation.setText(weatherApi.getList()[0].getWeather()[0].description);
+                lblCountry.setText(String.format("%s,%s", weatherApi.getCity().getName(), weatherApi.getCity().getCountry()));
+        lblUpdate.setText("Son Güncelleme: " + new SimpleDateFormat("dd.MM.yyyy - hh:mm").format(new Timestamp(Long.valueOf(weatherApi.getList()[0].getDt()) * 1000).getTime()));
+        lblHumidity.setText(Integer.valueOf(weatherApi.getList()[0].getMain().getHumidity()) + " %");
+        lblWind.setText( weatherApi.getList()[0].getWind().getSpeed() + " m/s");
+        lblPressure.setText(String.format("%s hPa", weatherApi.getList()[0].getMain().getPressure()));
 
         lblHumidityIcon.setText(R.string.wi_humidity);
         lblWindIcon.setText(R.string.wi_windy);

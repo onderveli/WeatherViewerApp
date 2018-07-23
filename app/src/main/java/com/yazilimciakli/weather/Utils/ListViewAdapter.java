@@ -14,15 +14,16 @@ import com.yazilimciakli.weather.R;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 public class ListViewAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private java.util.List<List> weatherList;
 
-    public ListViewAdapter(Activity activity, java.util.List<List> list) {
+    public ListViewAdapter(Activity activity, List[] list) {
         mInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.weatherList = list;
+        this.weatherList = Arrays.asList(list);
     }
 
     @Override
@@ -55,11 +56,11 @@ public class ListViewAdapter extends BaseAdapter {
 
         com.yazilimciakli.weather.Models.List weatherItem = weatherList.get(position);
 
-        lblIcon.setText(WeatherIcons.getWeatherIcon(view.getContext(), weatherItem.weather.get(0).icon));
-        lblDay.setText(new SimpleDateFormat("d MMMM, EEEE").format(new Timestamp(weatherItem.dt * 1000).getTime()));
-        lblExplanation.setText(weatherItem.weather.get(0).description);
-        lblMax.setText(weatherItem.temp.max.intValue() + "°");
-        lblMin.setText(weatherItem.temp.min.intValue() + "°");
+        lblIcon.setText(WeatherIcons.getWeatherIcon(view.getContext(), weatherItem.getWeather()[0].icon));
+        lblDay.setText(new SimpleDateFormat("d MMMM, EEEE").format(new Timestamp(Long.valueOf(weatherItem.getDt()) * 1000).getTime()));
+        lblExplanation.setText(weatherItem.getWeather()[0].description);
+        lblMax.setText(weatherItem.getMain().getTemp_max() + "°");
+        lblMin.setText(weatherItem.getMain().getTemp_min()  + "°");
         return view;
     }
 }

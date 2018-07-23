@@ -1,11 +1,11 @@
 package com.yazilimciakli.weather;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.gson.Gson;
 import com.yazilimciakli.weather.Models.WeatherApi;
 import com.yazilimciakli.weather.Utils.FileHelper;
@@ -33,12 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ViewPager viewPager;
-
+    private AdView mAdView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, "ca-app-pub-5142565439495272~8956908216");
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,11 +62,10 @@ public class MainActivity extends AppCompatActivity {
         try {
             // Dosyada var olan json verisini okuduk.
             String jsonData = fileHelper.read();
-
             Gson gson = new Gson();
             // Gson aracılığıyla json verisini parse (WeatherApi türünden nesne olarak aldık) ettik.
+            Log.d("HELP", "onCreate: "+jsonData);
             WeatherApi weatherApi = gson.fromJson(jsonData, WeatherApi.class);
-
             // ViewPagerAdapter nesnesinin instance'ını al.
             ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
             // adapter nesnesine TodayFragment türünden bir nesne ekle.

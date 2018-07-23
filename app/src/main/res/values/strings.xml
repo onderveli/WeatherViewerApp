@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">My Weather</string>
-    <string name="apiUrl">http://api.openweathermap.org/data/2.5/forecast/daily?q=%1$s,TR&amp;mode=json&amp;units=metric&amp;cnt=7&amp;appid=API_ID&amp;lang=tr</string>
+    <string name="apiUrl">http://api.openweathermap.org/data/2.5/forecast?q=%1$s,TR&amp;mode=json&amp;units=metric&amp;cnt=7&amp;appid=9a5303a89103ae28917feee0f7089c03&amp;lang=tr</string>
 </resources>

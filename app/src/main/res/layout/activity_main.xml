@@ -24,6 +24,16 @@
             android:titleTextColor="@android:color/white" />
 
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="FULL_BANNER"
+            app:adUnitId="ca-app-pub-5142565439495272/1816784792
+"></com.google.android.gms.ads.AdView>
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             app:tabGravity="fill"
@@ -34,14 +44,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+
+
+
     </android.support.design.widget.AppBarLayout>
-
-
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ECEFF1" />
-
+        android:background="#ECEFF1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </LinearLayout>

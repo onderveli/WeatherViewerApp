@@ -1,29 +1,70 @@
 
 package com.yazilimciakli.weather.Models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class WeatherApi {
+    private String message;
 
-    @SerializedName("city")
-    @Expose
-    public City city;
+    private String cnt;
 
-    @SerializedName("cod")
-    @Expose
-    public String cod;
+    private String cod;
 
-    @SerializedName("message")
-    @Expose
-    public String message;
+    private List[] list;
 
-    @SerializedName("cnt")
-    @Expose
-    public Integer cnt;
+    private City city;
 
-    @SerializedName("list")
-    @Expose
-    public java.util.List<List> list = null;
+    public String getMessage ()
+    {
+        return message;
+    }
 
+    public void setMessage (String message)
+    {
+        this.message = message;
+    }
+
+    public String getCnt ()
+    {
+        return cnt;
+    }
+
+    public void setCnt (String cnt)
+    {
+        this.cnt = cnt;
+    }
+
+    public String getCod ()
+    {
+        return cod;
+    }
+
+    public void setCod (String cod)
+    {
+        this.cod = cod;
+    }
+
+    public List[] getList ()
+    {
+        return list;
+    }
+
+    public void setList (List[] list)
+    {
+        this.list = list;
+    }
+
+    public City getCity ()
+    {
+        return city;
+    }
+
+    public void setCity (City city)
+    {
+        this.city = city;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ClassPojo [message = "+message+", cnt = "+cnt+", cod = "+cod+", list = "+list+", city = "+city+"]";
+    }
 }

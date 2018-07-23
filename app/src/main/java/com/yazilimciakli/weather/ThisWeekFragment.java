@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.yazilimciakli.weather.Models.List;
 import com.yazilimciakli.weather.Models.WeatherApi;
 import com.yazilimciakli.weather.Utils.ListViewAdapter;
 
@@ -29,7 +28,7 @@ public class ThisWeekFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_this_week, container, false);
 
         ListView lstWeather = (ListView) view.findViewById(R.id.thisWeekWeatherList);
-        ListViewAdapter adapter = new ListViewAdapter(getActivity(), weatherList.list);
+        ListViewAdapter adapter = new ListViewAdapter(getActivity(), weatherList.getList());
         lstWeather.setAdapter(adapter);
 
         return view;
